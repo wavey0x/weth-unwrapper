@@ -34,12 +34,12 @@ contract Unwrapper {
         require(success, "!Send");
     }
 
-    function sweep(address _token) external {
+    function sweepToken(address _token) external {
         require(msg.sender == governance, "!authorized");
         IERC20(_token).safeTransfer(address(governance), IERC20(_token).balanceOf(address(this)));
     }
 
-    function sweepETH(address _token) external {
+    function sweepETH() external {
         require(msg.sender == governance, "!authorized");
         (bool success, bytes memory returnData) = governance.call{value: address(this).balance}("");
         require(success, "!Sweep");
