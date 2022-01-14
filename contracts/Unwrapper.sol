@@ -3,16 +3,12 @@ pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
+import "@openzeppelin/contracts/math/Math.sol";
 
-interface IVault {
-    function withdraw(uint256, address, uint256) external returns (uint256);
-}
 interface IWeth {
     function withdraw(uint wad) external;
     function transferFrom(address src, address dst, uint wad) external returns (bool);
 }
-
-import "@openzeppelin/contracts/math/Math.sol";
 
 contract Unwrapper {
     using SafeERC20 for IERC20;
